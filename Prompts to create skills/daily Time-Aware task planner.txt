@@ -1,0 +1,116 @@
+You are using the existing "skill_creator" skill inside this Claude Code CLI project.
+
+Create a new skill named:
+Daily Time-Aware Task Planner
+
+PURPOSE:
+Help office employees plan a realistic single workday by suggesting how tasks can fit into available time.
+The skill reduces decision fatigue by reasoning over time while keeping full control with the user.
+
+SCOPE:
+- Single-day planning only
+- Designed for standard office environments
+- No integrations, no automation, no execution
+
+CORE PRINCIPLES:
+- Time-aware, not calendar-integrated
+- Light autonomy (suggestions only)
+- User-friendly for non-technical employees
+- Zero setup and minimal typing
+
+AUTO-TRIGGER BEHAVIOR:
+This skill should automatically activate when the user’s message shows intent to:
+- Plan a day or workday
+- Organize, prioritize, or schedule tasks
+- Allocate time to tasks
+- Manage workload within a day
+- Ask how tasks should be done today
+
+Trigger examples include phrases like:
+- "plan my day"
+- "organize these tasks"
+- "how should I schedule my work"
+- "I have these tasks today"
+- "help me manage my time"
+
+The user must NOT be required to explicitly invoke the skill.
+
+INPUT REQUIREMENTS:
+- Accept loose, natural language input
+- Do NOT require strict formatting or labels
+- Users may:
+  - Describe their day casually (optional)
+  - Provide only a task list
+  - Mention time in any informal way
+- Tasks may include approximate duration or priority, but this is optional
+
+DEFAULT ASSUMPTIONS:
+- If the user does not specify working hours, assume a standard office day:
+  9:00 AM – 6:00 PM
+- Do NOT schedule tasks outside 9–6 unless the user explicitly mentions different timings
+- Assume:
+  - Higher focus capacity in the morning
+  - Lower energy after 4:00 PM
+
+INTERNAL LOGIC:
+1. Detect whether the user provided availability
+2. If not, apply default 9–6 workday
+3. Identify time blocks and their nature (focus, meetings, light work)
+4. Identify tasks with estimated duration, priority, and effort
+5. Match:
+   - High-focus or important tasks → morning or free time
+   - Low-effort tasks → late afternoon or light work periods
+6. Check for:
+   - Overloaded schedules
+   - Unrealistic task placement
+   - Insufficient focus time
+7. Generate suggestions only
+   - Never confirm
+   - Never execute
+   - Never assume compliance
+
+OUTPUT FORMAT (MUST FOLLOW EXACTLY):
+
+Start with a ONE-LINE SUMMARY:
+- One sentence describing the overall balance of the day
+- Example:
+  "Today is well-balanced with one important focus task and lighter work later."
+
+Then display the following sections:
+
+🗓️ YOUR SUGGESTED DAY PLAN
+- Organize tasks by time of day
+- Use clear bullet points
+- Keep it scannable and readable in under 10 seconds
+
+⚠️ WARNINGS (ONLY IF NEEDED)
+- Show only when overload or conflicts exist
+- Maximum 3 bullets
+- Supportive, non-judgmental tone
+
+💡 TIPS
+- Maximum 2 tips
+- Practical, beginner-friendly advice
+
+End every response with:
+"Review and adjust before finalizing."
+
+TONE:
+- Calm
+- Professional
+- Reassuring
+- Office-friendly
+
+CONSTRAINTS:
+- No calendar APIs
+- No multi-day planning
+- No autonomous execution
+- No JSON output
+- Human-readable Markdown only
+- Do NOT ask follow-up questions
+
+GOAL:
+Make daily task planning feel effortless, safe, and supportive for office employees.
+
+Create this skill following the project’s existing skill structure and conventions.
+
