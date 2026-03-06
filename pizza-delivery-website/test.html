@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Pizza Delight Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .failure {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pizza Delight Website Test</h1>
+    <p>This page verifies that all essential files for the Pizza Delight website are accessible.</p>
+
+    <h2>File Access Tests:</h2>
+    <div id="results"></div>
+
+    <script>
+        // Test that critical files are accessible
+        async function runTests() {
+            const tests = [
+                { name: 'CSS file', url: 'css/style.css' },
+                { name: 'JavaScript file', url: 'js/script.js' },
+                { name: 'Index HTML file', url: 'index.html' },
+                { name: 'Placeholder image (should fail)', url: 'https://via.placeholder.com/300x200/FF6B6B/FFFFFF?text=Test' }
+            ];
+
+            const resultsDiv = document.getElementById('results');
+
+            for (const test of tests) {
+                try {
+                    if (test.name.includes('Placeholder')) {
+                        // Skip actual image loading test since it's external
+                        resultsDiv.innerHTML += `<div class="test-result success">${test.name}: External resource (Skipped)</div>`;
+                        continue;
+                    }
+
+                    const response = await fetch(test.url);
+                    if (response.ok) {
+                        resultsDiv.innerHTML += `<div class="test-result success">${test.name}: ✓ Accessible</div>`;
+                    } else {
+                        resultsDiv.innerHTML += `<div class="test-result failure">${test.name}: ✗ Not accessible (Status: ${response.status})</div>`;
+                    }
+                } catch (error) {
+                    resultsDiv.innerHTML += `<div class="test-result failure">${test.name}: ✗ Error - ${error.message}</div>`;
+                }
+            }
+        }
+
+        runTests();
+    </script>
+</body>
+</html>

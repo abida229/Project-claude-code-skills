@@ -1,0 +1,20 @@
+{
+  "name": "pizza-delivery-website",
+  "version": "1.0.0",
+  "description": "A complete website for a pizza delivery service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "pizza",
+    "delivery",
+    "website",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Pizza Delight",
+  "license": "MIT"
+}

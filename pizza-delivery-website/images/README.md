@@ -1,0 +1,1 @@
+This is a placeholder for pizza images. In a real application, you would place actual pizza images in this directory.
